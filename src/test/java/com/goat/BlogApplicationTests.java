@@ -3,21 +3,21 @@ package com.goat;
 
 
 import com.goat.entity.TagGY;
+import com.goat.entity.User;
 import com.goat.service.impl.TagGYServiceImpl;
+import com.goat.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
-
-@SpringBootTest
 @MapperScan("com.goat.dao")
+@SpringBootTest
 class BlogApplicationTests {
     @Autowired
     private DataSource dataSource;
@@ -60,5 +60,12 @@ class BlogApplicationTests {
 //        //释放资源
 //        con.close();
 //    }
+    @Autowired
+    private UserServiceImpl userService;
+    @Test
+    void findUser(){
+        User user = userService.queryUserByUserName("admin");
+        System.out.println(user);
+    }
 
 }

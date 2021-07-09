@@ -1,6 +1,6 @@
 package com.goat.entity;/**
  * @author lwj
- * @date 2021/7/7 9:35
+ * @date 2021/7/7 21:49
  * @version 1.0
  */
 
@@ -8,20 +8,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 /**
- * @ClassNameTagGY
+ * @ClassNameUser
  * @Descriprion
  * @AuthorLenovo
- * @Date 2021/7/79:35
+ * @Date 2021/7/721:49
  * @Version 1.0
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TagGY implements Serializable {
-    private Integer id;
-    private String tagName;
+public class User {
+    private Integer Id;
+    private String userName;
+    private String password;
 
 }

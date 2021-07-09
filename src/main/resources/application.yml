@@ -1,12 +1,15 @@
+server:
+  port: 6127
+#  mybatis配置
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
   type-aliases-package: com.goat.entity
-server:
-  port: 8080
+
 spring:
   application:
     name: blog
+#    数据源配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -34,4 +37,7 @@ spring:
       stat-view-servlet:
         enabled: true
         url-pattern: /druid/*
+#self4j配置 D:\log\blogLog
+logging:
+  config: classpath:self4j.xml
 
