@@ -11,4 +11,6 @@ public interface UserService {
 
     User queryUserByUserName(String userName);
 
+    boolean register(User user);
+
 }

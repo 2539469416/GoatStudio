@@ -30,21 +30,22 @@ public class UserController {
     @Autowired
     private UserServiceImpl userServiceImpl;
 
-    private static  Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     //登录
     @RequestMapping("/login")
     public ResultUtil<LoginUserVo> Login(@RequestParam("email") String username, @RequestParam("password") String password){
-        logger.info("username："+username+"-password："+password);
+        logger.info("登录--username："+username+"-password："+password);
 
         User user = userServiceImpl.queryUserByUserName(username);
+
         if(user==null){
             return ResultUtil.buildResult(ResultUtil.Status.USER_NOT);
         } else if(password.equals(user.getPassword())){
             String token = TokenUtil.getToken(user);
             LoginUserVo loginUserVo = new LoginUserVo(user,token);
             return ResultUtil.buildResult(ResultUtil.Status.OK,loginUserVo);
-        }else if (!password.equals(user.getUserName())){
+        }else if (!password.equals(user.getUsername())){
             return ResultUtil.buildResult(ResultUtil.Status.PWD_ERROR);
         }
 
@@ -55,13 +56,23 @@ public class UserController {
     //退出登录
     @RequestMapping("/loginOut")
     public ResultUtil<String> LoginOut(String token){
-
+        logger.info("用户退出");
         return ResultUtil.buildResult(ResultUtil.Status.OK,"ok");
     }
 
     //注册
     @RequestMapping("/register")
-    public ResultUtil<String> register(){
-        return null;
+    public ResultUtil<String> register(String username,String password){
+        logger.info("注册--username："+username+"-password："+password);
+        if (userServiceImpl.queryUserByUserName(username)!=null){
+            return ResultUtil.buildResult(ResultUtil.Status.EXIT,"用户存在");
+        }
+        User user = new User(username,password);
+        boolean state = userServiceImpl.register(user);
+        if (state){
+            return ResultUtil.buildResult(ResultUtil.Status.OK,"注册成功");
+        }
+
+        return ResultUtil.buildResult(ResultUtil.Status.INTERNAL_SERVER_ERROR,"未知错误");
     }
 }

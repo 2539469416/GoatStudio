@@ -20,7 +20,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class User {
     private Integer Id;
-    private String userName;
+    private String username;
     private String password;
+
+    public User(String username,String password){
+        this.username = username;
+        this.password = password;
+    }
+
 
 }

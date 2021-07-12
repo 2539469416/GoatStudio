@@ -7,5 +7,10 @@
         select * from t_manager where username=#{username}
     </select>
 
+    <insert id="register" parameterType="User">
+        insert into t_manager(username,password)
+        values(#{username},#{password})
+    </insert>
+
 
 </mapper>

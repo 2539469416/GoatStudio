@@ -9,7 +9,11 @@ mybatis:
 spring:
   application:
     name: blog
-#    数据源配置
+  servlet:
+    multipart:
+      max-file-size:  10MB
+      max-request-size: 100MB
+  #    数据源配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -39,5 +43,5 @@ spring:
         url-pattern: /druid/*
 #self4j配置 D:\log\blogLog
 logging:
-  config: classpath:self4j.xml
+  config: classpath:logger/log4j2.xml
 

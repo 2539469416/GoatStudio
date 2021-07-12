@@ -1,6 +1,7 @@
 package com.goat.dao;
 
 import com.goat.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author lwj
@@ -18,10 +19,9 @@ public interface UserDao {
 
     /**
      * 注册
-     * @param username
-     * @param password
+     * @param user
      * @return
      */
-    boolean register(String username,String password);
+    boolean register(User user);
 
 }
