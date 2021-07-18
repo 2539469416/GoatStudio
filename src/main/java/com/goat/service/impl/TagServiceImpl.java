@@ -4,9 +4,9 @@ package com.goat.service.impl;/**
  * @version 1.0
  */
 
-import com.goat.dao.TagGYDao;
-import com.goat.entity.TagGY;
-import com.goat.service.TagGYService;
+import com.goat.dao.TagDao;
+import com.goat.entity.Tag;
+import com.goat.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +20,17 @@ import java.util.List;
  * @Version 1.0
  */
 @Service
-public class TagGYServiceImpl implements TagGYService {
+public class TagServiceImpl implements TagService {
     @Autowired
-    private TagGYDao tagGYDao;
+    private TagDao tagDao;
 
     @Override
-    public List<TagGY> findAllTag() {
-        return tagGYDao.findAllTag();
+    public List<Tag> findAllTag() {
+        return tagDao.findAllTag();
+    }
+
+    @Override
+    public Tag queryIdByName(String tagName) {
+        return tagDao.queryIdByName(tagName);
     }
 }

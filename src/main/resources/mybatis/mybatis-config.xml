@@ -11,5 +11,6 @@
     <typeAliases>
         <package name="com.goat.entity"/>
     </typeAliases>
+    
 
 </configuration>

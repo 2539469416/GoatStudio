@@ -5,10 +5,9 @@ package com.goat.controller;/**
  */
 
 
-import com.goat.entity.TagGY;
-import com.goat.service.impl.TagGYServiceImpl;
+import com.goat.entity.Tag;
+import com.goat.service.impl.TagServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,13 +23,13 @@ import java.util.List;
  * @Version 1.0
  */
 @RestController
-public class TagGYController {
+public class TagController {
     @Autowired
-    private TagGYServiceImpl tagGYServiceImpl;
+    private TagServiceImpl tagServiceImpl;
 
     @RequestMapping("/tagList")
     public ModelAndView TagList(Model model){
-        List<TagGY> tagList = tagGYServiceImpl.findAllTag();
+        List<Tag> tagList = tagServiceImpl.findAllTag();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("tagLists",tagList);
         modelAndView.setViewName("tagLists");

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goat.dao.ArticleAddDao">
+    
+    <select id="articleList" resultType="article">
+        select * from  t_article
+    </select>
+
+    <select id="shareList" resultType="article">
+        select id,categoryId,title,description,author,createTime,showCount from  t_article order by  id desc
+    </select>
+
+    <select id="getArticleInfo" resultType="article">
+        select * from  t_article where id =#{aid}
+    </select>
+    
+    <insert id="addArticle" keyProperty="id" useGeneratedKeys="true" parameterType="com.goat.entity.Article">
+        insert into t_article (categoryId,title,content,description,statue,author,createTime,showCount)
+        values (#{categoryId},#{title},#{content},#{description},#{statue},#{author},#{createTime},#{showCount})
+    </insert>
+
+    <insert id="addArticleTag" parameterType="com.goat.entity.ArticleTag">
+        insert into t_article_tag(articleId, tagId) VALUES(#{articleId},#{tagId} )
+    </insert>
+
+</mapper>

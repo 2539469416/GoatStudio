@@ -20,7 +20,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TagGY implements Serializable {
+public class Tag implements Serializable {
     private Integer id;
     private String tagName;
 
