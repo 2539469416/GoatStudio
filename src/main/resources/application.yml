@@ -1,5 +1,10 @@
 server:
   port: 6127
+  ssl:
+    key-store: classpath:5603712_www.hiwj.top.pfx
+    key-store-password:
+    key-store-type: 
+    key-alias: alias
 #  mybatis配置
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
@@ -20,13 +25,26 @@ spring:
       max-file-size:  10MB
       max-request-size: 100MB
   #    数据源配置
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driverClassName: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://47.110.233.219:3306/blog?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
-      username: jie
-      password: ancmz147g
+      url: jdbc:mysql://localhost:3306/blog?useUnicode=yes&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+      username: root
+#      password:
+      password: toor
       initial-size: 10
       max-active: 100
       min-idle: 10
